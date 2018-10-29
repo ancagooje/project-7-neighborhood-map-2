@@ -13,7 +13,7 @@ class MapRendering extends Component {
     }
 
     mapReady = (props, map) => {
-        // Save the map reference in state and prepare the location markers
+        // Saving the map reference in state and preparing the location markers
         this.setState({map});
     }
 
