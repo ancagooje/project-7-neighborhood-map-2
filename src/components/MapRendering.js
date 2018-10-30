@@ -1,8 +1,11 @@
 
 import React, {Component} from 'react';
-import {Map, GoogleApiWrapper} from 'google-maps-react';
+import {Map, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 
 const MAP_KEY = "AIzaSyCRlDr_ACA80UcW_svxFgZqtUkzhL6COqI";
+const FS_CLIENT = "RXELH2QF5VFRWCD11BWSZWE1TP3OEDXDY3FSN1U552FCOY0J ";
+const FS_SECRET = "X0O4RURKYRVBH0IXWDZRLUWT0ZPKWQXIDJXB3ANT3T44111N ";
+const FS_VERSION = "20181029";
 
 class MapRendering extends Component {
     state = {
@@ -23,24 +26,70 @@ class MapRendering extends Component {
         this.updateMarkers(this.props.venues);
     }
     closeInfoWindow = () => {
-        // Disable any active marker animation
+        // Disable any existing marker animation
         this.state.activeMarker && this
             .state
             .activeMarker
             .setAnimation(null);
         this.setState({showingInfoWindow: false, activeMarker: null, activeMarkerProps: null});
     }
-
+    getBusinessInfo = (props, data) => {
+        // Look for matching venue data in FourSquare compared to what we know
+        return data
+            .response
+            .venues
+            .filter(item => item.name.includes(props.name) || props.name.includes(item.name));
+    }
     onMarkerClick = (props, marker, e) => {
         // Close any info window already open
         this.closeInfoWindow();
 
-        // Set the state to have the marker info show
-        this.setState({showingInfoWindow: true, activeMarker: marker, activeMarkerProps: props});
+          // Get the FourSquare data for each venue
+          let url = `https://api.foursquare.com/v2/venues/search?client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}&radius=100&ll=${props.position.lat},${props.position.lng}&llAcc=100`;
+          let headers = new Headers();
+          let request = new Request(url, {
+              method: 'GET',
+              headers
+          });
+
+// Create props for the active marker
+let activeMarkerProps;
+fetch(request)
+    .then(response => response.json())
+    .then(result => {
+        // Get just the business reference for the restaurant we want from the FourSquare
+        // return
+        let restaurant = this.getBusinessInfo(props, result);
+        activeMarkerProps = {
+            ...props,
+            foursquare: restaurant[0]
+        };
+
+        // Get the list of images for the restaurant if we got FourSquare data, or just
+                // finishing setting state with the data we have
+                if (activeMarkerProps.foursquare) {
+                    let url = `https://api.foursquare.com/v2/venues/${restaurant[0].id}/photos?client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(result => {
+                            activeMarkerProps = {
+                                ...activeMarkerProps,
+                                images: result.response.photos
+                            };
+                            if (this.state.activeMarker) 
+                                this.state.activeMarker.setAnimation(null);
+                            marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+                            this.setState({showingInfoWindow: true, activeMarker: marker, activeMarkerProps});
+                        })
+                } else {
+                    marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+                    this.setState({showingInfoWindow: true, activeMarker: marker, activeMarkerProps});
+                }
+            })
     }
 
     updateMarkers = (venues) => {
-        // If all the locations have been filtered then we're done
+        // If all the venues have been filtered,  we finished
         if (!venues) 
             return;
         
@@ -87,6 +136,7 @@ class MapRendering extends Component {
             lng: this.props.lon
         }
 
+        let amProps = this.state.activeMarkerProps;
         return (
             <Map
                 role="application"
@@ -105,7 +155,7 @@ class MapRendering extends Component {
                         <h3>{amProps && amProps.name}</h3>
                         {amProps && amProps.url
                             ? (
-                                <a href={amProps.url}>See website</a>
+                                <a href={amProps.url}>Visit website</a>
                             )
                             : ""}
                         
