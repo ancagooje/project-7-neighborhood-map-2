@@ -1,0 +1,112 @@
+[{
+        "name": "Ken's Place Seafood Restaurant",
+        "street": "207 Pine Point Rd",
+        "city": "Scarborough",
+        "country": "United States",
+        "pos": {
+            "lat": 43.55430102344693,
+            "lng": -70.36060873361248
+        },
+        "postalCode": "04074",
+        "state": "ME",
+        "url": "https://www.facebook.com/KensPlace1927/"
+    },
+
+    {
+        "name": "Clambake Seafood Restaurant",
+        "street": "350 Pine Point Rd",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "http://www.theclambake.com//",
+        "pos": {
+            "lat": 43.542335959197686,
+            "lng": -70.34513850200975
+        }
+    }, {
+        "name": "Bayley's Lobster Pound",
+        "street": "9 Avenue Six",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "url": "https://www.bayleys.com/",
+        "pos": {
+            "lat": 43.5436650953641,
+            "lng": -70.33664110293276
+        }
+    }, {
+        "name": "Rising Tide Restaurant",
+        "street": "23945 Franz Rd",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "www.risingtiderestaurant.com/",
+        "pos": {
+            "lat": 43.544715502911224,
+            "lng": -70.33375247425032
+        }
+    }, {
+        "name": "Sebago Brewing Company",
+        "street": "201 Southborough Dr",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "www.sebagobrewing.com/",
+        "pos": {
+            "lat": 43.62825203003519,
+            "lng": -70.34430233644034
+        }
+    }, {
+        "name": "Anjon's Italian Restaurant",
+        "street": "521 US Highway 1",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "www.anjons.com/",
+        "pos": {
+            "lat": 43.57680803847963,
+            "lng": -70.37714252349262
+        }
+    }, {
+        "name": "Bayley's Seafood Restaurant",
+        "street": "165 Pine Point Rd",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "bayleysseafood.com/",
+        "pos": {
+            "lat": 43.55773307198353,
+            "lng": -70.36686612805823
+        }
+    }, {
+        "name": "Salty Bay Seafood",
+        "street": "68 Jones Creek Dr",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "https://www.facebook.com/pages/category/Seafood-Restaurant/Salty-Bay-Seafood-Take-Out-and-Tavern-104205939615371/",
+        "pos": {
+            "lat": 43.54371004412673,
+            "lng": -70.3387633184112
+        }
+    }, {
+        "name": "Spurwink Country Kitchen",
+        "street": "150 Spurwink Road",
+        "city": "Scarborough",
+        "state": "ME",
+        "zip": "04074",
+        "country": "United States",
+        "url": "https://www.facebook.com/Uncle-Dons-Spurwink-Country-Kitchen-228655633827806/",
+        "pos": {
+            "lat": 43.576911,
+            "lng": -70.274867
+        }
+    }
+
+]
