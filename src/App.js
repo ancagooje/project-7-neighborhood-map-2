@@ -12,8 +12,6 @@ class App extends Component {
     all: venues
   }
  
- 
-
   render = () => {
     return (
       <div className="App">
