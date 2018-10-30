@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     lat: 43.5780556,
     lon: -70.3222222,
-    zoom: 13,
+    zoom: 12,
     all: venues
   }
  
@@ -22,7 +22,7 @@ class App extends Component {
           lat={this.state.lat}
           lon={this.state.lon}
           zoom={this.state.zoom}
-          locations={this.state.all}/>
+          venues={this.state.all}/>
       </div>
     );
   }

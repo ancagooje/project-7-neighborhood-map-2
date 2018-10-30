@@ -1,5 +1,5 @@
 ## About this project
-Project 7 for Udacity FEND Nanodegree is a single page application created from scratch(using Create React App) without 3rd party libraries, featuring a map of my favorite neighborhood. I chose to focus on seafood restaurants in my neighborhood. The selected restaurants are featured on the map using markers that drop when the page is loaded. The list of restaurants is also available from a drop down menu in the responsive Bootstrap navigation bar. The user can filter the restaurants using the search bar.
+Project 7 for Udacity FEND Nanodegree is a single page application created from scratch(using Create React App and Google-maps-react, featuring a map of my favorite neighborhood. I chose to focus on seafood restaurants in my neighborhood. The selected restaurants are featured on the map using markers that drop when the page is loaded. The list of restaurants is also available from a drop down menu in the responsive Bootstrap navigation bar. The user can filter the restaurants using the search bar.
 I have used Google maps API for rendering the map and Foursquare API to retrieve details about the venues.
 
 The service worker works only in production mode. Please run: [npm run build](#npm-run-build) for production mode.
