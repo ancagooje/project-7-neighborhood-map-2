@@ -10,7 +10,7 @@ I have used several resources for this project:
 
 - The Fend lessons regarding React & Google Maps API.
 
--I used the approach explained by Doug Brown in his webinar: 
+- I used the approach explained by Doug Brown in his webinar: 
 https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be
 
 - Elharony's tutorial part 2- the script loader function to load the google maps script source at:
