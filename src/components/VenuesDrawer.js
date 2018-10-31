@@ -25,12 +25,12 @@ class VenuesDrawer extends Component {
         listLink: {
             background: "transparent",
             border: "none",
-            color: "grey"
+            color: "blue"
         },
         filterEntry: {
             border: "2px solid gray",
             padding: "3px",
-            margin: "30px 0px 10px",
+            margin: "30px 0px 15px",
             width: "100%"
         }
     };

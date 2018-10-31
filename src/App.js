@@ -4,8 +4,6 @@ import venues from './data/venues.json';
 import MapRendering from './components/MapRendering';
 import VenuesDrawer from './components/VenuesDrawer';
 
- //import {InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-
 
   class App extends Component {
     state = {
@@ -25,14 +23,15 @@ import VenuesDrawer from './components/VenuesDrawer';
       position: "absolute",
       left: 10,
       top: 20,
-      background: "yellow",
+      background: "beige",
       padding: 10
     },
     hide: {
       display: 'none'
     },
     header: {
-      marginTop: "0px"
+      marginTop: "0px",
+      background: "beige"
     }
   };
 
@@ -63,16 +62,17 @@ import VenuesDrawer from './components/VenuesDrawer';
     return venues.filter(venue => venue.name.toLowerCase().includes(query.toLowerCase()));
   }
 
-  clickDrawerItem = (index) => {
-     
+  clickListItem = (index) => {
+    // Set the state to reflect the selected location array index
     this.setState({ selectedIndex: index, open: !this.state.open })
   }
+  
   render = () => {
     return (
       <div className="App">
         <div>
           <button onClick={this.toggleDrawer} style={this.styles.menuButton}>
-            <i className="fa fa-bars"></i>
+            <i className="fa fa-star"></i>
           </button>
           <h1>Seafood in Scarborough, ME </h1>
         </div>
