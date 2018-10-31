@@ -1,6 +1,8 @@
 
 import React, {Component} from 'react';
 import {Map, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
+import NoMapRendering from './NoMapRendering';
+
 
 const MAP_KEY = "AIzaSyCRlDr_ACA80UcW_svxFgZqtUkzhL6COqI";
 const FS_CLIENT = "RXELH2QF5VFRWCD11BWSZWE1TP3OEDXDY3FSN1U552FCOY0J ";
@@ -19,6 +21,30 @@ class MapRendering extends Component {
 
     componentDidMount = () => {
     }
+    componentWillReceiveProps = (props) => {
+        this.setState({firstDrop: false});
+
+        if (this.state.markers.length !== props.venues.length) {
+            this.closeInfoWindow();
+            this.updateMarkers(props.venues);
+            this.setState({activeMarker: null});
+
+            return;
+        }
+// The selected item is not the same as the active marker, so close the info window
+if (!props.selectedIndex || (this.state.activeMarker && 
+    (this.state.markers[props.selectedIndex] !== this.state.activeMarker))) {
+    this.closeInfoWindow();
+}
+
+// Make sure there's a selected index
+if (props.selectedIndex === null || typeof(props.selectedIndex) === "undefined") {
+    return;
+};
+
+// Treat the marker as clicked
+this.onMarkerClick(this.state.markerProps[props.selectedIndex], this.state.markers[props.selectedIndex]);
+}
 
     mapReady = (props, map) => {
         // Saving the map reference in state and preparing the location markers
@@ -33,6 +59,7 @@ class MapRendering extends Component {
             .setAnimation(null);
         this.setState({showingInfoWindow: false, activeMarker: null, activeMarkerProps: null});
     }
+
     getBusinessInfo = (props, data) => {
         // Look for matching venue data in FourSquare compared to what we know
         return data
@@ -66,7 +93,7 @@ fetch(request)
         };
 
         // Get the list of images for the restaurant if we got FourSquare data, or just
-                // finishing setting state with the data we have
+                // finish setting state with the data we have
                 if (activeMarkerProps.foursquare) {
                     let url = `https://api.foursquare.com/v2/venues/${restaurant[0].id}/photos?client_id=${FS_CLIENT}&client_secret=${FS_SECRET}&v=${FS_VERSION}`;
                     fetch(url)
@@ -113,7 +140,11 @@ fetch(request)
             markerProps.push(mProps);
 
             let animation = this.props.google.maps.Animation.DROP;
-            let marker = new this.props.google.maps.Marker({
+            let marker = new this
+            .props
+            .google
+            .maps
+            .Marker({
                 position: venue.pos, 
                 map: this.state.map, 
                 animation
@@ -158,11 +189,20 @@ fetch(request)
                                 <a href={amProps.url}>Visit website</a>
                             )
                             : ""}
-                        
+                            {amProps && amProps.images
+                            ? (
+                                <div><img
+                                    alt={amProps.name + " food picture"}
+                                    src={amProps.images.items[0].prefix + "100x100" + amProps.images.items[0].suffix}/>
+                                    <p>Image from Foursquare</p>
+                            </div>
+                            )
+                            : ""
+                        }
                     </div>
                 </InfoWindow>
             </Map>
         )
     }
 }
-export default GoogleApiWrapper({apiKey: MAP_KEY})(MapRendering)
+export default GoogleApiWrapper({apiKey: MAP_KEY, LoadingContainer: NoMapRendering})(MapRendering)
