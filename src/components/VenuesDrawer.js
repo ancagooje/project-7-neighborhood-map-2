@@ -28,7 +28,7 @@ class VenuesDrawer extends Component {
             color: "grey"
         },
         filterEntry: {
-            border: "1px solid gray",
+            border: "2px solid gray",
             padding: "3px",
             margin: "30px 0px 10px",
             width: "100%"
@@ -61,8 +61,8 @@ class VenuesDrawer extends Component {
                                 .venues
                                 .map((venue, index) => {
                                     return (
-                                        <li style={this.styles.venueItem} key={index}>
-                                            <button style={this.styles.venueLink} key={index} onClick={e => this.props.clickVenueItem(index)}>{venue.name}</button>
+                                        <li style={this.styles.listItem} key={index}>
+                                            <button style={this.styles.listLink} key={index} onClick={e => this.props.clickListItem(index)}>{venue.name}</button>
                                         </li>
                                     )
                                 })}
