@@ -1,5 +1,6 @@
 ## About this project
-Project 7 for Udacity FEND Nanodegree is a single page application created from scratch(using Create React App and Google-maps-react, featuring a map of my favorite neighborhood. I chose to focus on seafood restaurants in my neighborhood. The selected restaurants are featured on the map using markers that drop when the page is loaded. The list of restaurants is also available from a drop down menu in the responsive Bootstrap navigation bar. The user can filter the restaurants using the search bar.
+Project 7 for Udacity FEND Nanodegree is a single page application created from scratch (using Create React App and Google-maps-react), featuring a map of my favorite neighborhood. I chose to focus on seafood restaurants in my neighborhood. The selected restaurants are featured on the map using markers that drop when the page is loaded. The list of restaurants is also available from a drop down menu using Material UI. The user can filter the restaurants using the search bar.
+This is my third iteration of the code. 
 I have used Google maps API for rendering the map and Foursquare API to retrieve details about the venues.
 
 The service worker works only in production mode. Please run: [npm run build](#npm-run-build) for production mode.
@@ -8,6 +9,9 @@ The service worker works only in production mode. Please run: [npm run build](#n
 I have used several resources for this project: 
 
 - The Fend lessons regarding React & Google Maps API.
+
+-I used the approach explained by Doug Brown in his webinar: 
+https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be
 
 - Elharony's tutorial part 2- the script loader function to load the google maps script source at:
 https://www.youtube.com/watch?v=W5LhLZqj76s&t=170s
@@ -23,9 +27,7 @@ https://www.youtube.com/watch?v=LvQe7xrUh7I&index=6&list=PLKC17wty6rS1XVZbRlWjYU
 - I watched this tutorial as a general resource for signing up with Foursquare and Google Maps API: 
 https://www.youtube.com/watch?v=Uw5Ij56RhME 
 
-- I used the examples in the Bootstrap documentation on implementing a dropdown menu, navbar and search bar, and changed them for my specific use : 
-https://getbootstrap.com/docs/4.0/components/dropdowns/#menu-items
-https://getbootstrap.com/docs/4.0/components/navbar/
+ 
 
 
 ##About Create React App

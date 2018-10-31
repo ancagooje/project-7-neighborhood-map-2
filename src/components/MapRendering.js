@@ -42,7 +42,7 @@ if (props.selectedIndex === null || typeof(props.selectedIndex) === "undefined")
     return;
 };
 
-// Treat the marker as clicked
+// Treat the marker as being clicked
 this.onMarkerClick(this.state.markerProps[props.selectedIndex], this.state.markers[props.selectedIndex]);
 }
 
@@ -195,7 +195,7 @@ fetch(request)
                                     alt={amProps.name + " food picture"}
                                     src={amProps.images.items[0].prefix + "100x100" + amProps.images.items[0].suffix}/>
                                     <p>Image from Foursquare</p>
-                            </div>
+                                </div>
                             )
                             : ""
                         }

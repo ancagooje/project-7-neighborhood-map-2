@@ -25,7 +25,7 @@ import VenuesDrawer from './components/VenuesDrawer';
       position: "absolute",
       left: 10,
       top: 20,
-      background: "white",
+      background: "yellow",
       padding: 10
     },
     hide: {
